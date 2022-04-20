@@ -1,5 +1,6 @@
 package com.conversions.app.service.impl;
 
+import com.conversions.app.model.ConversionRequest;
 import com.conversions.app.service.ConversionInterface;
 import com.conversions.app.utils.Constants;
 import org.springframework.stereotype.Service;
@@ -13,14 +14,14 @@ import static com.conversions.app.utils.Constants.GALLON_LITERS_RATIO;
 public class ConversionImpl implements ConversionInterface {
 
     @Override
-    public String lengthInchesAndMeters(String lengthType, double lengthValue) {
+    public String lengthInchesAndMeters(ConversionRequest request) {
         String value = "";
-        switch (lengthType) {
+        switch (request.getConversionTypeTo()) {
             case "Inch":
-                value = "Inch: " + lengthValue * INCH_METER_RATIO;
+                value = "Inch: " + request.getConversionValue() * INCH_METER_RATIO;
                 break;
             case "Meter":
-                value = "Meter: " + lengthValue / INCH_METER_RATIO;
+                value = "Meter: " + request.getConversionValue() / INCH_METER_RATIO;
                 break;
             default:
                 value = Constants.DEFAULT_LENGTH_MESSAGE;
@@ -29,14 +30,14 @@ public class ConversionImpl implements ConversionInterface {
     }
 
     @Override
-    public String temperatureFAndC(String temperatureType, double temperatureValue) {
+    public String temperatureFAndC(ConversionRequest request) {
         String convertedTemp = "";
-        switch (temperatureType) {
+        switch (request.getConversionTypeTo()) {
             case "F":
-                convertedTemp = "F = " + (temperatureValue - 32) * 5 / 9;
+                convertedTemp = "F = " + (float) ((request.getConversionValue() * 1.8) + 32);
                 break;
             case "C":
-                convertedTemp = "C = " + ((9 * temperatureValue) / 5) + 32;
+                convertedTemp = "C = " + (request.getConversionValue() - 32) * 5 / 9;
                 break;
             default:
                 convertedTemp = Constants.DEFAULT_TEMPERATURE_MESSAGE;
@@ -45,14 +46,14 @@ public class ConversionImpl implements ConversionInterface {
     }
 
     @Override
-    public String volumeGallonsAndLiters(String volumeType, double volumeValue) {
+    public String volumeGallonsAndLiters(ConversionRequest request) {
         String volume = "";
-        switch (volumeType) {
+        switch (request.getConversionTypeTo()) {
             case "Liters":
-                volume = "Liters: " + volumeValue / GALLON_LITERS_RATIO;
+                volume = "Liters: " + request.getConversionValue() * GALLON_LITERS_RATIO;
                 break;
             case "Gallons":
-                volume = "Gallons: " + volumeValue * GALLON_LITERS_RATIO;
+                volume = "Gallons: " + request.getConversionValue() / GALLON_LITERS_RATIO;
                 break;
             default:
                 volume = Constants.DEFAULT_VOLUME_MESSAGE;
@@ -61,14 +62,14 @@ public class ConversionImpl implements ConversionInterface {
     }
 
     @Override
-    public String massPoundAndKilogram(String massType, double massValue) {
+    public String massPoundAndKilogram(ConversionRequest request) {
         String mass = "";
-        switch (massType) {
+        switch (request.getConversionTypeTo()) {
             case "Kilograms":
-                mass = "Kilograms: " + massValue / POUND_KILOGRAM_RATIO;
+                mass = "Kilograms: " + request.getConversionValue() * POUND_KILOGRAM_RATIO;
                 break;
             case "Pounds":
-                mass = "Pounds: " + massValue * POUND_KILOGRAM_RATIO;
+                mass = "Pounds: " + request.getConversionValue() / POUND_KILOGRAM_RATIO;
                 break;
             default:
                 mass = Constants.DEFAULT_MASS_MESSAGE;
@@ -77,15 +78,15 @@ public class ConversionImpl implements ConversionInterface {
     }
 
     @Override
-    public String areaSquareMAndSquareFoot(String areaType, double areaValue) {
+    public String areaSquareMAndSquareFoot(ConversionRequest request) {
         String areaReturnValue = "";
-        switch (areaType) {
+        switch (request.getConversionTypeTo()) {
             case "SMeter":
-                areaReturnValue = "Square Meter: " + areaValue / S_ROOT_S_METER_RATIO;
+                areaReturnValue = "Square Meter: " + request.getConversionValue() / S_ROOT_S_METER_RATIO;
                 break;
 
             case "SFoot":
-                areaReturnValue = "Square Foot: " + areaValue * S_ROOT_S_METER_RATIO;
+                areaReturnValue = "Square Foot: " + request.getConversionValue() * S_ROOT_S_METER_RATIO;
                 break;
             default:
                 areaReturnValue = Constants.DEFAULT_AREA_MESSAGE;

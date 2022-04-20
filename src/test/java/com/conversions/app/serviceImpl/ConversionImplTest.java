@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.conversions.app.testData.TestData.getRequestData;
+
 @SpringBootTest(classes = ConversionImpl.class)
 public class ConversionImplTest {
 
@@ -21,91 +23,91 @@ public class ConversionImplTest {
 
     @Test
     void shouldConvertInchesToMeters() {
-        String value = conversionInterface.lengthInchesAndMeters("Inch", 100.00);
+        String value = conversionInterface.lengthInchesAndMeters(getRequestData("Inch", 100.00));
         Assertions.assertEquals(value, "Inch: 2.54");
     }
 
     @Test
     void shouldConvertMetersToInches() {
-        String value = conversionInterface.lengthInchesAndMeters("Meter", 2.54);
+        String value = conversionInterface.lengthInchesAndMeters(getRequestData("Meter", 2.54));
         Assertions.assertEquals(value, "Meter: 100.0");
     }
 
     @Test
     void shouldDefaultMetersTAndInchesDefault() {
-        String value = conversionInterface.lengthInchesAndMeters("Kilometer", 2.54);
+        String value = conversionInterface.lengthInchesAndMeters(getRequestData("Kilometer", 2.54));
         Assertions.assertEquals(value, LENGTH_DEFAULT_VALUE);
     }
 
     @Test
     void shouldConvertFahrenheitToCelsius() {
-        String value = conversionInterface.temperatureFAndC("C", 30);
+        String value = conversionInterface.temperatureFAndC(getRequestData("C", 30));
         Assertions.assertEquals(value, "C = 54.032");
     }
 
     @Test
     void shouldConvertCelsiusToFahrenheit() {
-        String value = conversionInterface.temperatureFAndC("F", 30);
+        String value = conversionInterface.temperatureFAndC(getRequestData("F", 30));
         Assertions.assertEquals(value, "F = -1.1111111111111112");
     }
 
     @Test
     void shouldDefaultFahrenheitToCelsiusCalculation() {
-        String value = conversionInterface.temperatureFAndC("Test", 30);
+        String value = conversionInterface.temperatureFAndC(getRequestData("Test", 30));
         Assertions.assertEquals(value, TEMPERATURE_DEFAULT_VALUE);
     }
 
     @Test
     void shouldConvertGallonsToLiters() {
-        String value = conversionInterface.volumeGallonsAndLiters("Liters", 20);
+        String value = conversionInterface.volumeGallonsAndLiters(getRequestData("Liters", 20));
         Assertions.assertEquals(value, "Liters: 5.283457494584456");
     }
 
     @Test
     void shouldConvertLitersToGallons() {
-        String value = conversionInterface.volumeGallonsAndLiters("Gallons", 20);
+        String value = conversionInterface.volumeGallonsAndLiters(getRequestData("Gallons", 20));
         Assertions.assertEquals(value, "Gallons: 75.708");
     }
 
     @Test
     void shouldDefaultConvertLitersToGallons() {
-        String value = conversionInterface.volumeGallonsAndLiters("Default", 40);
+        String value = conversionInterface.volumeGallonsAndLiters(getRequestData("Default", 40));
         Assertions.assertEquals(value, VOLUME_DEFAULT_VALUE);
     }
 
     @Test
     void shouldConvertPoundToKilogram() {
-        String value = conversionInterface.massPoundAndKilogram("Kilograms", 20);
+        String value = conversionInterface.massPoundAndKilogram(getRequestData("Kilograms", 20));
         Assertions.assertEquals(value, "Kilograms: 44.052863436123346");
     }
 
     @Test
     void shouldConvertKilogramToPound() {
-        String value = conversionInterface.massPoundAndKilogram("Pounds", 30);
+        String value = conversionInterface.massPoundAndKilogram(getRequestData("Pounds", 30));
         Assertions.assertEquals(value, "Pounds: 13.620000000000001");
     }
 
     @Test
     void shouldDefaultKilogramToPound() {
-        String value = conversionInterface.massPoundAndKilogram("Default", 2.54);
+        String value = conversionInterface.massPoundAndKilogram(getRequestData("Default", 2.54));
         Assertions.assertEquals(value, MASS_ACTUAL_DEFAULT_VALUE);
     }
 
     @Test
     void shouldConvertSquareMeterToSquareFoot() {
-        String value = conversionInterface.areaSquareMAndSquareFoot("SFoot", 20);
+        String value = conversionInterface.areaSquareMAndSquareFoot(getRequestData("SFoot", 20));
         Assertions.assertEquals(value, "Square Foot: 215.27999999999997");
     }
 
     @Test
     void shouldConvertSquareFootToSquareMeter() {
-        String value = conversionInterface.areaSquareMAndSquareFoot("SMeter", 30);
+        String value = conversionInterface.areaSquareMAndSquareFoot(getRequestData("SMeter", 30));
         Assertions.assertEquals(value, "Square Meter: 2.787068004459309");
     }
 
     @Test
     void shouldDefaultSquareFootAndSquareMeter() {
-        String value = conversionInterface.areaSquareMAndSquareFoot("Default", 2.54);
+        String value = conversionInterface.areaSquareMAndSquareFoot(getRequestData("Default", 2.54));
         Assertions.assertEquals(value, DEFAULT_AREA_MESSAGE);
     }
 }

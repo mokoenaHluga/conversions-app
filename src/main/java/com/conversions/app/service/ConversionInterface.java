@@ -1,13 +1,15 @@
 package com.conversions.app.service;
 
+import com.conversions.app.model.ConversionRequest;
+
 public interface ConversionInterface {
-    String lengthInchesAndMeters(String lengthType, double lengthValue);
+    String lengthInchesAndMeters(ConversionRequest request);
 
-    String temperatureFAndC(String temperatureType, double temperatureValue);
+    String temperatureFAndC(ConversionRequest request);
 
-    String volumeGallonsAndLiters(String volumeType, double volumeValue);
+    String volumeGallonsAndLiters(ConversionRequest request);
 
-    String massPoundAndKilogram(String massType, double massValue);
+    String massPoundAndKilogram(ConversionRequest request);
 
-    String areaSquareMAndSquareFoot(String areaType, double areaValue);
+    String areaSquareMAndSquareFoot(ConversionRequest request);
 }
