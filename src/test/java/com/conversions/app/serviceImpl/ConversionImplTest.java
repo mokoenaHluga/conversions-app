@@ -42,13 +42,13 @@ public class ConversionImplTest {
     @Test
     void shouldConvertFahrenheitToCelsius() {
         String value = conversionInterface.temperatureFAndC(getRequestData("C", 30));
-        Assertions.assertEquals(value, "C = 54.032");
+        Assertions.assertEquals(value, "C = -1.1111111111111112");
     }
 
     @Test
     void shouldConvertCelsiusToFahrenheit() {
         String value = conversionInterface.temperatureFAndC(getRequestData("F", 30));
-        Assertions.assertEquals(value, "F = -1.1111111111111112");
+        Assertions.assertEquals(value, "F = 86.0");
     }
 
     @Test
@@ -60,13 +60,13 @@ public class ConversionImplTest {
     @Test
     void shouldConvertGallonsToLiters() {
         String value = conversionInterface.volumeGallonsAndLiters(getRequestData("Liters", 20));
-        Assertions.assertEquals(value, "Liters: 5.283457494584456");
+        Assertions.assertEquals(value, "Liters: 75.708");
     }
 
     @Test
     void shouldConvertLitersToGallons() {
         String value = conversionInterface.volumeGallonsAndLiters(getRequestData("Gallons", 20));
-        Assertions.assertEquals(value, "Gallons: 75.708");
+        Assertions.assertEquals(value, "Gallons: 5.283457494584456");
     }
 
     @Test
@@ -78,13 +78,13 @@ public class ConversionImplTest {
     @Test
     void shouldConvertPoundToKilogram() {
         String value = conversionInterface.massPoundAndKilogram(getRequestData("Kilograms", 20));
-        Assertions.assertEquals(value, "Kilograms: 44.052863436123346");
+        Assertions.assertEquals(value, "Kilograms: 9.08");
     }
 
     @Test
     void shouldConvertKilogramToPound() {
         String value = conversionInterface.massPoundAndKilogram(getRequestData("Pounds", 30));
-        Assertions.assertEquals(value, "Pounds: 13.620000000000001");
+        Assertions.assertEquals(value, "Pounds: 66.07929515418502");
     }
 
     @Test
