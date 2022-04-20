@@ -13,26 +13,28 @@ public class ConversionImplTest {
     public static final String MASS_ACTUAL_DEFAULT_VALUE = "Mass type entered not valid, please make sure it's either Pounds or Pounds";
     public static final String VOLUME_DEFAULT_VALUE = "Volume type entered not valid, please make sure it's either Liters or Gallons";
     public static final String TEMPERATURE_DEFAULT_VALUE = "Temperature type entered not valid, please make sure it's either Celsius or Fahrenheit";
-    public static final String DISTANCE_DEFAULT_VALUE = "Distance type entered not valid, please make sure it's either Inch or Meter";
+    public static final String LENGTH_DEFAULT_VALUE = "Length type entered not valid, please make sure it's either Inch or Meter";
+    public static final String DEFAULT_AREA_MESSAGE = "Area type entered not valid, please make sure it's either Square Meter or Square Foot";
+
     @Autowired
     ConversionInterface conversionInterface;
 
     @Test
-    void testDistanceInchesToMeters() {
-        String value = conversionInterface.distanceInchesAndMeters("Inch", 100.00);
+    void shouldConvertInchesToMeters() {
+        String value = conversionInterface.lengthInchesAndMeters("Inch", 100.00);
         Assertions.assertEquals(value, "Inch: 2.54");
     }
 
     @Test
-    void testDistanceMetersToInches() {
-        String value = conversionInterface.distanceInchesAndMeters("Meter", 2.54);
+    void shouldConvertMetersToInches() {
+        String value = conversionInterface.lengthInchesAndMeters("Meter", 2.54);
         Assertions.assertEquals(value, "Meter: 100.0");
     }
 
     @Test
-    void testDistanceMetersTAndInchesDefault() {
-        String value = conversionInterface.distanceInchesAndMeters("Kilometer", 2.54);
-        Assertions.assertEquals(value, DISTANCE_DEFAULT_VALUE);
+    void shouldDefaultMetersTAndInchesDefault() {
+        String value = conversionInterface.lengthInchesAndMeters("Kilometer", 2.54);
+        Assertions.assertEquals(value, LENGTH_DEFAULT_VALUE);
     }
 
     @Test
@@ -87,5 +89,23 @@ public class ConversionImplTest {
     void shouldDefaultKilogramToPound() {
         String value = conversionInterface.massPoundAndKilogram("Default", 2.54);
         Assertions.assertEquals(value, MASS_ACTUAL_DEFAULT_VALUE);
+    }
+
+    @Test
+    void shouldConvertSquareMeterToSquareFoot() {
+        String value = conversionInterface.areaSquareMAndSquareFoot("SFoot", 20);
+        Assertions.assertEquals(value, "Square Foot: 215.27999999999997");
+    }
+
+    @Test
+    void shouldConvertSquareFootToSquareMeter() {
+        String value = conversionInterface.areaSquareMAndSquareFoot("SMeter", 30);
+        Assertions.assertEquals(value, "Square Meter: 2.787068004459309");
+    }
+
+    @Test
+    void shouldDefaultSquareFootAndSquareMeter() {
+        String value = conversionInterface.areaSquareMAndSquareFoot("Default", 2.54);
+        Assertions.assertEquals(value, DEFAULT_AREA_MESSAGE);
     }
 }

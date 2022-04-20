@@ -1,13 +1,15 @@
 package com.conversions.app.utils;
 
 public class Constants {
-    public static final String defaultDistanceMessage = "Distance type entered not valid, please make sure it's either Inch or Meter";
-    public static final String defaultTemperatureMessage = "Temperature type entered not valid, please make sure it's either Celsius or Fahrenheit";
-    public static final String defaultVolumeMessage = "Volume type entered not valid, please make sure it's either Liters or Gallons";
-    public static final String defaultMassMessage = "Mass type entered not valid, please make sure it's either Pounds or Pounds";
+    public static final String DEFAULT_LENGTH_MESSAGE = "Length type entered not valid, please make sure it's either Inch or Meter";
+    public static final String DEFAULT_TEMPERATURE_MESSAGE = "Temperature type entered not valid, please make sure it's either Celsius or Fahrenheit";
+    public static final String DEFAULT_VOLUME_MESSAGE = "Volume type entered not valid, please make sure it's either Liters or Gallons";
+    public static final String DEFAULT_MASS_MESSAGE = "Mass type entered not valid, please make sure it's either Pounds or Pounds";
+    public static final String DEFAULT_AREA_MESSAGE = "Area type entered not valid, please make sure it's either Square Meter or Square Foot";
 
-    public static final double distanceConstant = 0.0254;
-    public static final double temperatureConstant = 0.0254;
-    public static final double volumeConstant = 0.0254;
-    public static final double massConstant = 0.0254;
+
+    public static final double LENGTH_CONSTANT = 0.0254;
+    public static final double VOLUME_CONSTANT = 3.7854;
+    public static final double MASS_CONSTANT = 0.454;
+    public static final double AREA_CONSTANT = 10.764;
 }

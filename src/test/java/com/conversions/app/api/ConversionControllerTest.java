@@ -32,7 +32,7 @@ public class ConversionControllerTest {
     @Test
     void shouldConvertInchesToMeters() throws Exception {
         MockHttpServletRequestBuilder mockRequest =
-                MockMvcRequestBuilders.get("/api/conversion/distance/{distanceType}/{distanceValue}", "Inch", inchToConvert);
+                MockMvcRequestBuilders.get("/api/conversion/length/{lengthType}/{lengthValue}", "Inch", inchToConvert);
 
         this.mockMvc.perform(mockRequest)
                 .andExpect(status().isOk());
@@ -42,7 +42,7 @@ public class ConversionControllerTest {
     void shouldConvertMetersToInches() throws Exception {
 
         MockHttpServletRequestBuilder mockRequest =
-                MockMvcRequestBuilders.get("/api/conversion/distance/{distanceType}/{distanceValue}", "Meter", meterToConvert);
+                MockMvcRequestBuilders.get("/api/conversion/length/{lengthType}/{lengthValue}", "Meter", meterToConvert);
 
         this.mockMvc.perform(mockRequest)
                 .andExpect(status().isOk());
@@ -80,7 +80,7 @@ public class ConversionControllerTest {
     void shouldConvertLitersToGallons() throws Exception {
 
         MockHttpServletRequestBuilder mockRequest =
-                MockMvcRequestBuilders.get("/api/conversion//volume/{volumeType}/{volumeValue}", "Gallons", meterToConvert);
+                MockMvcRequestBuilders.get("/api/conversion/volume/{volumeType}/{volumeValue}", "Gallons", meterToConvert);
 
         this.mockMvc.perform(mockRequest)
                 .andExpect(status().isOk());
@@ -100,6 +100,25 @@ public class ConversionControllerTest {
 
         MockHttpServletRequestBuilder mockRequest =
                 MockMvcRequestBuilders.get("/api/conversion/mass/{massType}/{massValue}", "Pounds", 20);
+
+        this.mockMvc.perform(mockRequest)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void shouldConvertSquareMeterToSquareFoot() throws Exception {
+
+        MockHttpServletRequestBuilder mockRequest =
+                MockMvcRequestBuilders.get("/api/conversion/area/{areaType}/{areaValue}", "SFoot", meterToConvert);
+
+        this.mockMvc.perform(mockRequest)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void shouldConvertSquareFootToSquareMeter() throws Exception {
+        MockHttpServletRequestBuilder mockRequest =
+                MockMvcRequestBuilders.get("/api/conversion/area/{areaType}/{areaValue}", "SMeter", 10);
 
         this.mockMvc.perform(mockRequest)
                 .andExpect(status().isOk());

@@ -18,9 +18,9 @@ public class ConversionController {
         this.conversionInterface = conversionInterface;
     }
 
-    @GetMapping(value = "/distance/{distanceType}/{distanceValue}")
-    public String distanceInchesAndMeters(@PathVariable("distanceValue") double distanceValue, @PathVariable("distanceType") String distanceType) {
-        return conversionInterface.distanceInchesAndMeters(distanceType, distanceValue);
+    @GetMapping(value = "/length/{lengthType}/{lengthValue}")
+    public String lengthInchesAndMeters(@PathVariable("lengthValue") double lengthValue, @PathVariable("lengthType") String lengthType) {
+        return conversionInterface.lengthInchesAndMeters(lengthType, lengthValue);
     }
 
     @GetMapping(value = "/temperature/{temperatureType}/{temperatureValue}")
@@ -36,5 +36,10 @@ public class ConversionController {
     @GetMapping(value = "/mass/{massType}/{massValue}")
     public String massPoundAndKilogram(@PathVariable("massType") String massType, @PathVariable("massValue") double massValue) {
         return conversionInterface.massPoundAndKilogram(massType, massValue);
+    }
+
+    @GetMapping(value = "/area/{areaType}/{areaValue}")
+    public String areaSquareMAndSquareFoot(@PathVariable("areaType") String areaType, @PathVariable("areaValue") double areaValue) {
+        return conversionInterface.areaSquareMAndSquareFoot(areaType, areaValue);
     }
 }

@@ -4,20 +4,26 @@ import com.conversions.app.service.ConversionInterface;
 import com.conversions.app.utils.Constants;
 import org.springframework.stereotype.Service;
 
+import static com.conversions.app.utils.Constants.AREA_CONSTANT;
+import static com.conversions.app.utils.Constants.LENGTH_CONSTANT;
+import static com.conversions.app.utils.Constants.MASS_CONSTANT;
+import static com.conversions.app.utils.Constants.VOLUME_CONSTANT;
+
 @Service
 public class ConversionImpl implements ConversionInterface {
 
     @Override
-    public String distanceInchesAndMeters(String distanceType, double distanceValue) {
+    public String lengthInchesAndMeters(String lengthType, double lengthValue) {
         String value = "";
-        switch (distanceType) {
+        switch (lengthType) {
             case "Inch":
-                value = "Inch: " + distanceValue * Constants.distanceConstant;
+                value = "Inch: " + lengthValue * LENGTH_CONSTANT;
                 break;
             case "Meter":
-                value = "Meter: " + distanceValue / Constants.distanceConstant;
+                value = "Meter: " + lengthValue / LENGTH_CONSTANT;
                 break;
-            default:  value = Constants.defaultDistanceMessage;
+            default:
+                value = Constants.DEFAULT_LENGTH_MESSAGE;
         }
         return value;
     }
@@ -32,7 +38,8 @@ public class ConversionImpl implements ConversionInterface {
             case "C":
                 convertedTemp = "C = " + ((9 * temperatureValue) / 5) + 32;
                 break;
-            default:  convertedTemp = Constants.defaultTemperatureMessage;
+            default:
+                convertedTemp = Constants.DEFAULT_TEMPERATURE_MESSAGE;
         }
         return convertedTemp;
     }
@@ -42,13 +49,13 @@ public class ConversionImpl implements ConversionInterface {
         String volume = "";
         switch (volumeType) {
             case "Liters":
-                volume = "Liters: " + volumeValue / 3.7854;
+                volume = "Liters: " + volumeValue / VOLUME_CONSTANT;
                 break;
             case "Gallons":
-                volume = "Gallons: " + volumeValue * 3.7854;
+                volume = "Gallons: " + volumeValue * VOLUME_CONSTANT;
                 break;
             default:
-                volume = Constants.defaultVolumeMessage;
+                volume = Constants.DEFAULT_VOLUME_MESSAGE;
         }
         return volume;
     }
@@ -58,14 +65,31 @@ public class ConversionImpl implements ConversionInterface {
         String mass = "";
         switch (massType) {
             case "Kilograms":
-                mass = "Kilograms: " + massValue / 0.454;
+                mass = "Kilograms: " + massValue / MASS_CONSTANT;
                 break;
             case "Pounds":
-                mass = "Pounds: " + massValue * 0.454;
+                mass = "Pounds: " + massValue * MASS_CONSTANT;
                 break;
             default:
-                mass = Constants.defaultMassMessage;
+                mass = Constants.DEFAULT_MASS_MESSAGE;
         }
         return mass;
+    }
+
+    @Override
+    public String areaSquareMAndSquareFoot(String areaType, double areaValue) {
+        String areaReturnValue = "";
+        switch (areaType) {
+            case "SMeter":
+                areaReturnValue = "Square Meter: " + areaValue / AREA_CONSTANT;
+                break;
+
+            case "SFoot":
+                areaReturnValue = "Square Foot: " + areaValue * AREA_CONSTANT;
+                break;
+            default:
+                areaReturnValue = Constants.DEFAULT_AREA_MESSAGE;
+        }
+        return areaReturnValue;
     }
 }
