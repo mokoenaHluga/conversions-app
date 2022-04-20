@@ -7,9 +7,8 @@ public class Constants {
     public static final String DEFAULT_MASS_MESSAGE = "Mass type entered not valid, please make sure it's either Pounds or Pounds";
     public static final String DEFAULT_AREA_MESSAGE = "Area type entered not valid, please make sure it's either Square Meter or Square Foot";
 
-
-    public static final double LENGTH_CONSTANT = 0.0254;
-    public static final double VOLUME_CONSTANT = 3.7854;
-    public static final double MASS_CONSTANT = 0.454;
-    public static final double AREA_CONSTANT = 10.764;
+    public static final double INCH_METER_RATIO = 0.0254;
+    public static final double GALLON_LITERS_RATIO = 3.7854;
+    public static final double POUND_KILOGRAM_RATIO = 0.454;
+    public static final double S_ROOT_S_METER_RATIO = 10.764;
 }

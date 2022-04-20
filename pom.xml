@@ -117,6 +117,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>conversion-api</finalName>
     </build>
 
 </project>

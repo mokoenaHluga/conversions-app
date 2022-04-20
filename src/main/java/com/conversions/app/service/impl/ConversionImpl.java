@@ -4,10 +4,10 @@ import com.conversions.app.service.ConversionInterface;
 import com.conversions.app.utils.Constants;
 import org.springframework.stereotype.Service;
 
-import static com.conversions.app.utils.Constants.AREA_CONSTANT;
-import static com.conversions.app.utils.Constants.LENGTH_CONSTANT;
-import static com.conversions.app.utils.Constants.MASS_CONSTANT;
-import static com.conversions.app.utils.Constants.VOLUME_CONSTANT;
+import static com.conversions.app.utils.Constants.INCH_METER_RATIO;
+import static com.conversions.app.utils.Constants.POUND_KILOGRAM_RATIO;
+import static com.conversions.app.utils.Constants.S_ROOT_S_METER_RATIO;
+import static com.conversions.app.utils.Constants.GALLON_LITERS_RATIO;
 
 @Service
 public class ConversionImpl implements ConversionInterface {
@@ -17,10 +17,10 @@ public class ConversionImpl implements ConversionInterface {
         String value = "";
         switch (lengthType) {
             case "Inch":
-                value = "Inch: " + lengthValue * LENGTH_CONSTANT;
+                value = "Inch: " + lengthValue * INCH_METER_RATIO;
                 break;
             case "Meter":
-                value = "Meter: " + lengthValue / LENGTH_CONSTANT;
+                value = "Meter: " + lengthValue / INCH_METER_RATIO;
                 break;
             default:
                 value = Constants.DEFAULT_LENGTH_MESSAGE;
@@ -49,10 +49,10 @@ public class ConversionImpl implements ConversionInterface {
         String volume = "";
         switch (volumeType) {
             case "Liters":
-                volume = "Liters: " + volumeValue / VOLUME_CONSTANT;
+                volume = "Liters: " + volumeValue / GALLON_LITERS_RATIO;
                 break;
             case "Gallons":
-                volume = "Gallons: " + volumeValue * VOLUME_CONSTANT;
+                volume = "Gallons: " + volumeValue * GALLON_LITERS_RATIO;
                 break;
             default:
                 volume = Constants.DEFAULT_VOLUME_MESSAGE;
@@ -65,10 +65,10 @@ public class ConversionImpl implements ConversionInterface {
         String mass = "";
         switch (massType) {
             case "Kilograms":
-                mass = "Kilograms: " + massValue / MASS_CONSTANT;
+                mass = "Kilograms: " + massValue / POUND_KILOGRAM_RATIO;
                 break;
             case "Pounds":
-                mass = "Pounds: " + massValue * MASS_CONSTANT;
+                mass = "Pounds: " + massValue * POUND_KILOGRAM_RATIO;
                 break;
             default:
                 mass = Constants.DEFAULT_MASS_MESSAGE;
@@ -81,11 +81,11 @@ public class ConversionImpl implements ConversionInterface {
         String areaReturnValue = "";
         switch (areaType) {
             case "SMeter":
-                areaReturnValue = "Square Meter: " + areaValue / AREA_CONSTANT;
+                areaReturnValue = "Square Meter: " + areaValue / S_ROOT_S_METER_RATIO;
                 break;
 
             case "SFoot":
-                areaReturnValue = "Square Foot: " + areaValue * AREA_CONSTANT;
+                areaReturnValue = "Square Foot: " + areaValue * S_ROOT_S_METER_RATIO;
                 break;
             default:
                 areaReturnValue = Constants.DEFAULT_AREA_MESSAGE;
