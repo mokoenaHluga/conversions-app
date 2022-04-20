@@ -1,5 +1,6 @@
 # conversions-app
-Spring Boot application using rest API’s to do a conversions. Fully unit tested, and runs its own Docker 
+Spring Boot application using rest API’s to do a conversions. Fully unit tested, and runs its own Docker.
+Uses Swagger for API Documentation and Jacoco for Test coverage.
 
 # To build the app docker image, run the below command
 docker build -t conversion-api.jar .
